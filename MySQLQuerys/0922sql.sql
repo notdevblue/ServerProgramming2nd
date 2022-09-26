@@ -307,3 +307,5 @@ ALTER TABLE `BusinessCard` CHANGE COLUMN `ID` `ID` INT NOT NULL AUTO_INCREMENT U
 -- 	`BusinessCard_ID` INT,
 -- 	FOREIGN KEY(`BusinessCard_ID`) REFERENCES `BusinessCard`(`ID`)
 -- );
+
+DELETE FROM `city_kor` WHERE CountryCode = CountryCode;
