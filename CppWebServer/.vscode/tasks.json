@@ -8,6 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "./mysql/mysql.cpp",
                 "`pkg-config --cflags --libs libpistache`",
                 "`mysql_config --cflags --libs`",
                 // "-I",

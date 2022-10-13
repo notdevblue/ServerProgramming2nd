@@ -2,7 +2,11 @@
 
 class MySQL {
 public:
-    MySQL(const char *_addr, const char *_db_id, const char *_db_pw);
+    MySQL(
+        const char *_addr,
+        const char *_db_id,
+        const char *_db_pw,
+        const char* _schema);
     ~MySQL();
 
 private:
@@ -14,6 +18,6 @@ private:
     void finish_with_error(const char* file, const long& line);
 
 public:
-    const MYSQL_RES* select(const char* sql);
+    MYSQL_RES* select(const char* sql);
     void insert();
 };
