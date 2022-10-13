@@ -33,6 +33,7 @@ int main()
     while ((row = mysql_fetch_row(res))) {
         for (int i = 0; i < num_fields; ++i) {
             std::cout << (row[i] ? row[i] : "NULL") << " ";
+            // TODO: 이거 람다로 따로 빼서 작동되게 하기
         }
 
         std::cout << std::endl;
