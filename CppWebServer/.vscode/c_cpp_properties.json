@@ -4,8 +4,10 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/han/Binarys/restbed/distribution/include",
-                "/home/han/Binarys/restbed/distribution/library"
+                "/home/han/Binarys/pistache/prefix/include/",
+                "/home/han/Binarys/pistache/prefix/lib64/",
+                "/usr/include/mysql/",
+                "/usr/lib64/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
