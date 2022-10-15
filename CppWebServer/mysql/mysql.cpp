@@ -37,9 +37,13 @@ void MySQL::finish_with_error (const char* file, const int& line) {
     exit(1);
 }
 
+const char *MySQL::print_error() {
+    const char *err = mysql_error(m_db_con);
+    fprintf(stderr, "Exception occurred: %s\n", err);
+    return err;
+}
 
 void MySQL::select(const char* sql, std::function<void(const char *)> callback) {
-
     // 쿼리
     if (mysql_query(m_db_con, sql)) { 
         finish_with_error(__FILE__, __LINE__);
@@ -75,10 +79,19 @@ void MySQL::select(const char* sql, std::function<void(const char *)> callback) 
             memcpy(field_res_str + strlen(field_res_str), fetched_row, strlen(fetched_row));
             field_res_str[strlen(field_res_str)] = ',';
         }
+
+        field_res_str[strlen(field_res_str)] = '@';
     }
 
     // 문자열 끝 구분을 위해
-    field_res_str[strlen(field_res_str) - 1] = ';';
+
+    if (mysql_num_rows(result) > 0) {
+        field_res_str[strlen(field_res_str) - 2] = ';';
+        field_res_str[strlen(field_res_str) - 1] = '\0';
+    }
+    else {
+        field_res_str[strlen(field_res_str) - 1] = ';';
+    }
 
     // resize (encluding null terminator)
     field_res_str = (char *)realloc(field_res_str, strlen(field_res_str) + sizeof(char));
@@ -88,4 +101,15 @@ void MySQL::select(const char* sql, std::function<void(const char *)> callback) 
 
     mysql_free_result(result);
     free(field_res_str);
+}
+
+void MySQL::insert(const char *sql, std::function<void(const char *)> error_callback, std::function<void()> callback) {
+    if (mysql_query(m_db_con, sql)) {
+        if (error_callback)
+            error_callback(print_error());
+    }
+    else {
+        if (callback)
+            callback();
+    }
 }

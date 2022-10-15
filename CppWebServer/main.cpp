@@ -1,33 +1,29 @@
 #include <iostream>
 #include <pistache/endpoint.h>
-#include "./mysql/mysql.h"
-
-// class HelloHandler : public Pistache::Http::Handler {
-// public:
-//     HTTP_PROTOTYPE(HelloHandler);
-
-//     void onRequest(const Pistache::Http::Request& request,
-//                    Pistache::Http::ResponseWriter response) {
-//         response.send(Pistache::Http::Code::Ok, "Install Gentoo\nAnd Keep C++\n");
-//     }
-// };
+#include "./server/server.h"
 
 int main()
 {
-    // const uint16_t PORT = 36000;
-    // const Address ADDR(Ipv4::any(), Port(PORT));
+    // MySQL sql("127.0.0.1", "han", "0225", "MinecraftRecipe");
 
-    // auto OPTIONS = Http::Endpoint::options().threads(1);
-    // Http::Endpoint server(ADDR);
-    // server.init(OPTIONS);
-    // server.setHandler(Http::make_handler<HelloHandler>());
-    // server.serve();
+    Server server(38000, Address(Ipv4::any(), 38000));
+    server.serve();
 
-    // std::cout << "Server running on port: " << PORT << std::endl;
-
-    MySQL sql("127.0.0.1", "han", "0225", "MinecraftRecipe");
-    sql.select("SELECT * FROM `Item`", [](const char *str)
-               { printf("%s\n", str); });
+    // sql.select("SELECT * FROM `Item`",
+    //            [](const char *str)
+    //            { printf("%s\n", str); });
+    // sql.insert(
+    //     "INSERT INTO `Item`(ItemName, Explanation) VALUES(\"12시간 가까이 C++ 하고 있는 고통스러운 우앱\", \"재목이 곧 내용입니다. 힘들게 더미로 넣고 있는데 이거 개 빡시네 내가 왜 C++ 로 시작했지 이거\")",
+    //     [](const char *err)
+    //     { puts(err); },
+    //     []()
+    //     { puts("Success"); });
+    // sql.insert(
+    //     "INSERT INTO `CreaterData`(ItemName, Name) VALUES(\"12시간 가까이 C++ 하고 있는 고통스러운 우앱\", \"우앱\")",
+    //     [](const char *err)
+    //     { puts(err); },
+    //     []()
+    //     { puts("Success"); });
 
     return (0);
 }

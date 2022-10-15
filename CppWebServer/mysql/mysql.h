@@ -1,3 +1,4 @@
+#pragma once
 #include <mysql.h>
 #include <functional>
 
@@ -17,8 +18,12 @@ private:
     const char *m_db_pw;
 
     void finish_with_error(const char* file, const int& line);
+    const char *print_error();
 
 public:
     void select(const char* sql, std::function<void(const char *)> callback);
-    void insert();
+
+    void insert(const char* sql,
+                std::function<void(const char *)> error_callback, 
+                std::function<void()> callback);
 };

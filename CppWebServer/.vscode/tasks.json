@@ -9,6 +9,8 @@
                 "-g",
                 "${file}",
                 "./mysql/mysql.cpp",
+                "./server/server.cpp",
+                "./han.cpp",
                 "`pkg-config --cflags --libs libpistache`",
                 "`mysql_config --cflags --libs`",
                 // "-I",
