@@ -1,4 +1,5 @@
 #include <mysql.h>
+#include <functional>
 
 class MySQL {
 public:
@@ -15,9 +16,9 @@ private:
     const char *m_db_id;
     const char *m_db_pw;
 
-    void finish_with_error(const char* file, const long& line);
+    void finish_with_error(const char* file, const int& line);
 
 public:
-    MYSQL_RES* select(const char* sql);
+    void select(const char* sql, std::function<void(const char *)> callback);
     void insert();
 };

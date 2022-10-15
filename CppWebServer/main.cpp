@@ -26,20 +26,8 @@ int main()
     // std::cout << "Server running on port: " << PORT << std::endl;
 
     MySQL sql("127.0.0.1", "han", "0225", "MinecraftRecipe");
-    MYSQL_RES *res = sql.select("SELECT * FROM `Item`");
-    int num_fields = mysql_num_fields(res);
-    MYSQL_ROW row;
-
-    while ((row = mysql_fetch_row(res))) {
-        for (int i = 0; i < num_fields; ++i) {
-            std::cout << (row[i] ? row[i] : "NULL") << " ";
-            // TODO: 이거 람다로 따로 빼서 작동되게 하기
-        }
-
-        std::cout << std::endl;
-    }
-
-    mysql_free_result(res);
+    sql.select("SELECT * FROM `Item`", [](const char *str)
+               { printf("%s\n", str); });
 
     return (0);
 }
