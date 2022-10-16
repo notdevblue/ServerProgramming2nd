@@ -36,8 +36,6 @@ void Server::serve() {
     m_endpoint->serve();
 }
 
-// query 스트링 잘 작동함.
-// TODO: query 스트링으로 아이템 검색 기능
 void Server::get_item(const Rest::Request& req, Http::ResponseWriter res) {
     const Http::Uri::Query query = req.query();
     const std::string name = query.get("name").value();
