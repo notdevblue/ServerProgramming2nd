@@ -9,6 +9,11 @@ public class Item : MonoBehaviour
     public string id;
     public string tabledata;
 
+    public Button btnSelf;
+    public Button btnRecipe;
+
+    Table _table;
+
     public void Init(string itemName, string explanation, string createrName, string id, string tabledata)
     {
         this.itemName.text = itemName;
@@ -21,8 +26,14 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(() => {
+        _table = FindObjectOfType<Table>();
+
+        btnSelf.onClick.AddListener(() => {
             Request.Instance.curclickeditemname = itemName.text;
+        });
+
+        btnRecipe.onClick.AddListener(() => {
+            _table.SetTable(tabledata);
         });
     }
 }

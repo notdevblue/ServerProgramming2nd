@@ -22,7 +22,7 @@ public class ItemResetter : MonoBehaviour
             string[] datas = x.Split(',');
             Instantiate(prefab, this.transform)
                 .GetComponent<Item>()
-                .Init(datas[1], datas[2], datas[3], datas[0], datas[4]);
+                .Init(datas[1], datas[2], datas[3], datas[0], datas[5]);
 
 
         });

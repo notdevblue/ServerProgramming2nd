@@ -9,15 +9,22 @@ public class AddItemButton : MonoBehaviour
 
 
     private Button _button;
+    private Table _table;
 
 
 
     private void Start()
     {
         _button = GetComponent<Button>();
+        _table = FindObjectOfType<Table>();
 
         _button.onClick.AddListener(() => {
-            Request.Instance.InsertItem(name.text, createrName.text, explanation.text);
+            Request.Instance.InsertItem(name.text, createrName.text, explanation.text, _table.ToString());
+
+            _table.Clear();
+            name.text = "";
+            createrName.text = "";
+            explanation.text = "";
         });
     }
 }

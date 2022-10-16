@@ -6,10 +6,20 @@ using UnityEngine.UI;
 public class TableButton : MonoBehaviour
 {
     public Text text;
+    public string inner;
 
     public void Set(string name)
     {
-        text.text = name;
+        inner = name;
+        
+        if (name == "NULL")
+        {
+            text.text = "";
+        }
+        else
+        {
+            text.text = name;
+        }
     }
 
     private void Start()

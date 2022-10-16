@@ -46,8 +46,7 @@ public class Request : MonoBehaviour
     {
         if (!CheckRegex(_name) ||
             !CheckRegex(_creatername) ||
-            !CheckRegex(_explanation) ||
-            !CheckRegex(_tabledata)) // TODO: 서버로 INSERT 해야 함
+            !CheckRegex(_explanation))
         {
             Debug.LogError("Regex fail");
             return;
