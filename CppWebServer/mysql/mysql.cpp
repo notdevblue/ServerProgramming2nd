@@ -43,7 +43,7 @@ const char *MySQL::print_error() {
     return err;
 }
 
-void MySQL::select(const char* sql, std::function<void(const char *)> callback) {
+void MySQL::select(const char *sql, std::function<void(const char *)> callback) {
     // 쿼리
     if (mysql_query(m_db_con, sql)) { 
         finish_with_error(__FILE__, __LINE__);
