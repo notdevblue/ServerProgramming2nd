@@ -12,9 +12,14 @@ public class Request : MonoBehaviour
     public string m_server_addr = "localhost";
     public ushort m_server_port = 36000;
 
-    public void Req()
-    {
 
+    public string lastReq = "";
+
+    static public Request Instance;
+
+    private void Awake()
+    {
+        Instance = this;
     }
 
     public void GetItem(string _name)
@@ -22,13 +27,17 @@ public class Request : MonoBehaviour
         if (!CheckRegex(_name))
         {
             Debug.Log("Regex fail");
+            return;
         }
+
+        lastReq = "getitem";
 
         StartCoroutine(SendRequest("/get/item/", ("name", _name)));
     }
 
     public void GetAllItem()
     {
+        lastReq = "getallitem";
         StartCoroutine(SendRequest("/get/allitem/", ("", "")));
     }
 
@@ -42,6 +51,8 @@ public class Request : MonoBehaviour
             Debug.LogError("Regex fail");
             return;
         }
+
+        lastReq = "insertitem";
 
         StartCoroutine(SendRequest("/set/item/",
                                    ("name", _name),
