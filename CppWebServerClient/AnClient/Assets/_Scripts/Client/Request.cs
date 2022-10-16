@@ -93,9 +93,10 @@ public class Request : MonoBehaviour
 
         for (int i = 0; i < _params.Length; ++i)
         {
+            string data = _params[i].Item2.Replace(' ', '_');
             sb.Append(_params[i].Item1);
             sb.Append("=");
-            sb.Append(_params[i].Item2);
+            sb.Append(data);
             sb.Append("&");
         }
         sb.Remove(sb.Length - 1, 1);
@@ -107,7 +108,7 @@ public class Request : MonoBehaviour
 
     private bool CheckRegex(string str)
     {
-        Regex rx = new Regex(@"[a-z|A-Z]");
+        Regex rx = new Regex(@"[a-z|A-Z|0-9| ]");
         return rx.Match(str).Success;
     }
 }

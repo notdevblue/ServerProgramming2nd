@@ -30,7 +30,7 @@ public class Parse : MonoBehaviour
 
         for (int i = 0; i < values.Length; ++i)
         {
-            parsedValues.Add(values[i]);
+            parsedValues.Add(values[i].Replace('_', ' '));
         }
 
         OnPacketParsed.Invoke(parsedKeys, parsedValues);
