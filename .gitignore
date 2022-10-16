@@ -1,2 +1,6 @@
-*/node_modules
-*/secret.js
+**/node_modules
+**/secret.js
+
+**/Library
+**/Logs
+**/Temp
