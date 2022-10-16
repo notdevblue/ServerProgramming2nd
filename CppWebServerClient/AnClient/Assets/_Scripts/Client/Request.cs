@@ -14,6 +14,7 @@ public class Request : MonoBehaviour
 
 
     public string lastReq = "";
+    public string curclickeditemname = "";
 
     static public Request Instance;
 

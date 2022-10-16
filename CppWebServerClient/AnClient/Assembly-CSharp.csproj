@@ -41,6 +41,9 @@
      <Compile Include="Assets/_Scripts/UI/AddItemButton.cs" />
      <Compile Include="Assets/_Scripts/UI/Item.cs" />
      <Compile Include="Assets/_Scripts/UI/ItemResetter.cs" />
+     <Compile Include="Assets/_Scripts/UI/SearchItemButton.cs" />
+     <Compile Include="Assets/_Scripts/UI/TableButton.cs" />
+     <Compile Include="Assets/_Scripts/UI/Table.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/han/Unity/Hub/Editor/2021.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

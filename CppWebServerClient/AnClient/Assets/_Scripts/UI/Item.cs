@@ -17,4 +17,12 @@ public class Item : MonoBehaviour
         this.id = id;
         this.tabledata = tabledata;
     }
+
+
+    private void Start()
+    {
+        GetComponent<Button>().onClick.AddListener(() => {
+            Request.Instance.curclickeditemname = itemName.text;
+        });
+    }
 }
